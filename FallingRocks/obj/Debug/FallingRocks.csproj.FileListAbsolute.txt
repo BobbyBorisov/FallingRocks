@@ -1,6 +1,0 @@
-c:\users\bobby\documents\visual studio 2013\Projects\FallingRocks\FallingRocks\bin\Debug\FallingRocks.exe.config
-c:\users\bobby\documents\visual studio 2013\Projects\FallingRocks\FallingRocks\bin\Debug\FallingRocks.exe
-c:\users\bobby\documents\visual studio 2013\Projects\FallingRocks\FallingRocks\bin\Debug\FallingRocks.pdb
-c:\users\bobby\documents\visual studio 2013\Projects\FallingRocks\FallingRocks\obj\Debug\FallingRocks.csprojResolveAssemblyReference.cache
-c:\users\bobby\documents\visual studio 2013\Projects\FallingRocks\FallingRocks\obj\Debug\FallingRocks.exe
-c:\users\bobby\documents\visual studio 2013\Projects\FallingRocks\FallingRocks\obj\Debug\FallingRocks.pdb
