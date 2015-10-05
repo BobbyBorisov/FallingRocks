@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -103,6 +103,15 @@ namespace FallingRocks
 
         private static void DetermineCollision()
         {
+            //Object coordinateX = new object();
+            //Object coordinateY = new object();
+            //coordinateX = GameObject.x;
+            //coordinateY = GameObject.y;
+
+            if ((Dwarf.x == Rock.x && Dwarf.y == Rock.y) || (Dwarf.x + 1 == Rock.x && Dwarf.x + 1 == Rock.y) || (Dwarf.x - 1 == Rock.x && Dwarf.x - 1 == Rock.y))
+            {
+                _dwarf.livesCount--;
+            }
             //determine collision between the _dwarf and rocks
         }
     }
