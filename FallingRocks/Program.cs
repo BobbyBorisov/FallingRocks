@@ -108,7 +108,9 @@ namespace FallingRocks
             //coordinateX = GameObject.x;
             //coordinateY = GameObject.y;
 
-            if ((Dwarf.x == Rock.x && Dwarf.y == Rock.y) || (Dwarf.x + 1 == Rock.x && Dwarf.x + 1 == Rock.y) || (Dwarf.x - 1 == Rock.x && Dwarf.x - 1 == Rock.y))
+            if ((Dwarf.x == Rock.x && Dwarf.y == Rock.y)
+                || (Dwarf.x + 1 == Rock.x && Dwarf.x + 1 == Rock.y)
+                || (Dwarf.x - 1 == Rock.x && Dwarf.x - 1 == Rock.y))
             {
                 _dwarf.livesCount--;
             }
