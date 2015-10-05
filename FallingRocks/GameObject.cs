@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,8 +8,8 @@ namespace FallingRocks
 {
     public abstract class GameObject
     {
-        public int x { set; get; }
-        public int y { set; get; }
+        public static int x { set; get; }
+        public static int y { set; get; }
 
         public abstract void Draw();
     }
