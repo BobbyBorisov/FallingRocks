@@ -62,7 +62,6 @@ namespace FallingRocks
                 //wait for the user input and determine if to start a new game or exit this one
             }
         }
-//test commit
         
         static void Main(string[] args)
         {
