@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,6 +12,7 @@ namespace FallingRocks
         private ConsoleColor _color;
         private int _boundaryX;
         public int livesCount;
+        public bool isCollision;
 
         public Dwarf(int boundaryX, int boundaryY,int countOfLives){
             x = boundaryX/2;
