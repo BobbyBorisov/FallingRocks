@@ -68,7 +68,7 @@ namespace FallingRocks
             Console.BufferWidth = Console.WindowWidth = WindowWidth;
             Console.BufferHeight = Console.WindowHeight = WindowHeight;
 
-            _dwarf = new Dwarf(WindowWidth, WindowHeight,10);
+            _dwarf = new Dwarf(WindowWidth, WindowHeight, 10);
             while (true)
             {
                 GetUserInput();
@@ -108,11 +108,21 @@ namespace FallingRocks
             //coordinateX = GameObject.x;
             //coordinateY = GameObject.y;
 
-            if ((Dwarf.x == Rock.x && Dwarf.y == Rock.y)
-                || (Dwarf.x + 1 == Rock.x && Dwarf.x + 1 == Rock.y)
-                || (Dwarf.x - 1 == Rock.x && Dwarf.x - 1 == Rock.y))
+            
+            for (int i = 0; i < _rocks.Count; i++)
             {
-                _dwarf.livesCount--;
+                if ((_dwarf.x == _rocks[i].x && _dwarf.x == _rocks[i].y)
+                || (_dwarf.x + 1 == _rocks[i].x && _dwarf.x + 1 == _rocks[i].y)
+                || (_dwarf.x - 1 == _rocks[i].x && _dwarf.x - 1 == _rocks[i].y))
+                {
+                    _dwarf.livesCount--;
+                    _dwarf.isCollision = true;
+                    break;
+                }
+            }
+            if (_dwarf.isCollision)
+            {
+                _rocks.Clear();
             }
             //determine collision between the _dwarf and rocks
         }
