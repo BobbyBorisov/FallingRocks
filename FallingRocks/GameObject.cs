@@ -8,8 +8,8 @@ namespace FallingRocks
 {
     public abstract class GameObject
     {
-        public static int x { set; get; }
-        public static int y { set; get; }
+        public int x { set; get; }
+        public int y { set; get; }
 
         public abstract void Draw();
     }
