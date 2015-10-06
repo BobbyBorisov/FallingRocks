@@ -20,6 +20,7 @@ namespace FallingRocks
         private static List<Rock> _rocks = new List<Rock>();
         private static int MaximumNumberOfRocks = 9;
         static Random random = new Random();
+        private static List<char> _possibleSymbols = new List<char>() { '^','*','%','&','$','#' }; //symbols for the rocks
 
         private static void GetUserInput()
         {
@@ -61,16 +62,18 @@ namespace FallingRocks
         {
             if (_dwarf.livesCount > 0)
             {
-                Console.Clear();
+                Console.SetCursorPosition(0, WindowHeight - 1);
+                Console.Write(new string(' ',WindowWidth - GameMenuWidth));
+                //Console.Clear();
                 DrawGameMenu();
                 _dwarf.Draw();
 
-                foreach (var rock in _rocks)
-                {
-                    rock.Draw();
-                }
+                //foreach (var rock in _rocks)
+                //{
+                //    rock.Draw();
+                //}
 
-                Thread.Sleep(100);
+                //Thread.Sleep(100);
             }
             else
             {
@@ -105,6 +108,7 @@ namespace FallingRocks
                     ConsoleKeyInfo result = Console.ReadKey();
                     if ((result.Key == ConsoleKey.Enter))
                     {
+                        Console.Clear();
                         Main();
                     }
                     else if ((result.Key == ConsoleKey.Escape))
@@ -119,23 +123,24 @@ namespace FallingRocks
         {
             Console.BufferWidth = Console.WindowWidth = WindowWidth;
             Console.BufferHeight = Console.WindowHeight = WindowHeight;
-
+            Console.CursorVisible = false;
             _dwarf = new Dwarf(WindowWidth, WindowHeight, 10);
+            GenerateNewRocks();
             while (true)
             {
+                System.Threading.Thread.Sleep(500 - 3 * (int)gameSpeed); //speed
                 GetUserInput();
                 MoveRocks();
-                GenerateNewRocks();
                 DetermineCollision();
                 Repaint();
-
+                gameSpeed = Math.Min(gameSpeed + Acceleration, MaximumGameSpeed); //acceleration
                 //figure out how to exit from the cycle
             }
         }
 
         private static void MoveRocks()
         {
-            var rocksIndexesToBeRemoved = new List<int>();
+            //var rocksIndexesToBeRemoved = new List<int>();
 
             //iterate over the rocks and move them down(Rock object has a method MoveDown()
             //check if rock is visible and add it for deletion
@@ -144,13 +149,55 @@ namespace FallingRocks
             //increase gameSpeed by some acceleration and then use it to decrease Thread.Sleep argument in Repaint() method
 
             //remove rocks from the current array for deletion by indexes
+
+            for (int p = 0; p < _rocks.Count; p++)
+            {
+                int check1 = _rocks[p].BoundaryY;
+                int check = _rocks[p].BoundaryY + 4;
+                if (_rocks[p].BoundaryY < 0)
+                {
+                    _rocks[p] = new Rock(_rocks[p].BoundaryX, _rocks[p].BoundaryY + 4);
+                }
+                else if (_rocks[p].BoundaryY == WindowHeight - 1)
+                {
+                    ClearRock(_rocks[p]);
+                    _rocks[p] = new Rock(random.Next(0, WindowWidth - GameMenuWidth), 0);
+                }
+                else if (check > WindowHeight - 1)
+                {
+                    ClearRock(_rocks[p]);
+                    _rocks[p] = new Rock(_rocks[p].x, WindowHeight - 1);
+                }
+                else
+                {
+                    ClearRock(_rocks[p]);
+                    _rocks[p] = new Rock(_rocks[p].BoundaryX, _rocks[p].BoundaryY + 4);
+                    GenerateRock(_rocks[p]);
+                }
+            }
+        }
+        private static void GenerateRock(Rock rock, ConsoleColor color = ConsoleColor.Blue)
+        {
+            Console.SetCursorPosition(rock.BoundaryX, rock.BoundaryY);
+            Console.ForegroundColor = color;
+            Console.Write(_possibleSymbols[random.Next(0,_possibleSymbols.Count)]);
+        }
+        private static void ClearRock(Rock rock, char ch = ' ', ConsoleColor color = ConsoleColor.Black)
+        {
+            Console.SetCursorPosition(rock.BoundaryX, rock.BoundaryY);
+            Console.ForegroundColor = color;
+            Console.Write(ch);
         }
 
         
         private static void GenerateNewRocks()
         {
             //check whether we have the max number of rocks .. otherwise generate a new one and pass WindowsWidth and WIndowsHeight to
-            //the constructor 
+            //the constructor
+            for (int i = 0; i < MaximumNumberOfRocks; i++)
+            {
+                _rocks.Add(new Rock(random.Next(0, WindowWidth - GameMenuWidth), 0 - i * 4));
+            }
         }
 
         private static void DetermineCollision()
@@ -163,9 +210,9 @@ namespace FallingRocks
             
             for (int i = 0; i < _rocks.Count; i++)
             {
-                if ((_dwarf.x == _rocks[i].x && _dwarf.y == _rocks[i].y)
-                || (_dwarf.x + 1 == _rocks[i].x && _dwarf.x + 1 == _rocks[i].y)
-                || (_dwarf.x - 1 == _rocks[i].x && _dwarf.x - 1 == _rocks[i].y))
+                if ((_dwarf.x == _rocks[i].BoundaryX && _dwarf.y == _rocks[i].BoundaryY + 1)
+                || (_dwarf.x + 1 == _rocks[i].BoundaryX && _dwarf.y == _rocks[i].BoundaryY + 1)
+                || (_dwarf.x - 1 == _rocks[i].BoundaryX && _dwarf.y == _rocks[i].BoundaryY + 1))
                 {
                     _dwarf.livesCount--;
                     _dwarf.isCollision = true;
@@ -175,6 +222,10 @@ namespace FallingRocks
             if (_dwarf.isCollision)
             {
                 _rocks.Clear();
+                Console.Clear();
+                GenerateNewRocks();
+                _dwarf = new Dwarf(WindowWidth, WindowHeight, _dwarf.livesCount);
+                _dwarf.isCollision = false;
             }
             //determine collision between the _dwarf and rocks
         }
