@@ -117,6 +117,7 @@ namespace FallingRocks
                     {
                         Console.Clear();
                         gameSpeed = 0d;
+                        gameScore = 0;
                         Main();
                     }
                     else if ((result.Key == ConsoleKey.Escape))
@@ -185,6 +186,7 @@ namespace FallingRocks
                     GenerateRock(_rocks[p], chars[p], colors[p]);
                 }
             }
+            gameScore = gameScore + 9;
         }
         private static void GenerateRock(Rock rock, char symbol, ConsoleColor color)
         {
