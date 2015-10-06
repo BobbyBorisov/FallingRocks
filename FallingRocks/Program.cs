@@ -76,10 +76,46 @@ namespace FallingRocks
             {
                 //gameover
                 //wait for the user input and determine if to start a new game or exit this one
+
+                _rocks.Clear();
+                
+                Console.Clear();
+
+                Console.ForegroundColor = ConsoleColor.White;
+                Console.SetCursorPosition(19, 4);
+                Console.Write("{0}");
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.SetCursorPosition(17, 6);
+                Console.Write("O,NO!");
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.SetCursorPosition(12, 8);
+                Console.Write("YOU FAILED!");
+                Console.ForegroundColor = ConsoleColor.Yellow;
+                Console.SetCursorPosition(15, 18);
+                Console.Write("GAME OVER!!!");
+                Console.ForegroundColor = ConsoleColor.Green;
+                Console.SetCursorPosition(8, 22);
+                Console.Write("press [ENTER] to play again");
+                Console.ForegroundColor = ConsoleColor.Green;
+                Console.SetCursorPosition(17, 6);
+                Console.Write("press [ESCAPE] to exit");
+
+                while (true)
+                {
+                    ConsoleKeyInfo result = Console.ReadKey();
+                    if ((result.Key == ConsoleKey.Enter))
+                    {
+                        Main();
+                    }
+                    else if ((result.Key == ConsoleKey.Escape))
+                    {
+                        return;
+                    }
+                }
             }
         }
         
-        static void Main(string[] args)
+        static void Main()
         {
             Console.BufferWidth = Console.WindowWidth = WindowWidth;
             Console.BufferHeight = Console.WindowHeight = WindowHeight;
