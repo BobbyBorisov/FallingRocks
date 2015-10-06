@@ -45,7 +45,7 @@ namespace FallingRocks
                     {
                         _dwarf.MoveLeft();
                     }
-                    else if ((pressedKey.Key == ConsoleKey.RightArrow) && ((_dwarf.x + 1) <= WindowWidth - 2))
+                    else if ((pressedKey.Key == ConsoleKey.RightArrow) && ((_dwarf.x + 1) <= WindowWidth - GameMenuWidth - 2))
                     {
                         _dwarf.MoveRight();
                     }
