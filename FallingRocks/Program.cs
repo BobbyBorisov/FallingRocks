@@ -26,6 +26,22 @@ namespace FallingRocks
             while (Console.KeyAvailable)
             {
                 //get user input and according to the key move the dwarf(use its methods)
+                while (Console.KeyAvailable) // key pressed
+                {
+
+                    //first read, then clear the buffer from old key
+                    ConsoleKeyInfo pressedKey = Console.ReadKey(true);
+
+                    //moving the DWARF
+                    if ((pressedKey.Key == ConsoleKey.LeftArrow) && ((_dwarf.x - 2) >= 0))
+                    {
+                        _dwarf.MoveLeft();
+                    }
+                    else if ((pressedKey.Key == ConsoleKey.RightArrow) && ((_dwarf.x + 1) <= WindowWidth - 2))
+                    {
+                        _dwarf.MoveRight();
+                    }
+                }
             }
         }
 
@@ -111,7 +127,7 @@ namespace FallingRocks
             
             for (int i = 0; i < _rocks.Count; i++)
             {
-                if ((_dwarf.x == _rocks[i].x && _dwarf.x == _rocks[i].y)
+                if ((_dwarf.x == _rocks[i].x && _dwarf.y == _rocks[i].y)
                 || (_dwarf.x + 1 == _rocks[i].x && _dwarf.x + 1 == _rocks[i].y)
                 || (_dwarf.x - 1 == _rocks[i].x && _dwarf.x - 1 == _rocks[i].y))
                 {

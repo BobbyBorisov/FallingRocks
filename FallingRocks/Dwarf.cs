@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,6 +12,7 @@ namespace FallingRocks
         private ConsoleColor _color;
         private int _boundaryX;
         public int livesCount;
+        public bool isCollision;
 
         public Dwarf(int boundaryX, int boundaryY,int countOfLives){
             x = boundaryX/2;
@@ -20,23 +21,40 @@ namespace FallingRocks
             _color = ConsoleColor.White;
         }
 
-        public override void Draw ()
+        public override void Draw()
         {
             //if we have collided draw some symbol at the middle of our dwarf
             //otherwise set cursor at position x-1,y because the dwarf is 3 symbols {0} and the x position is the middle one
             // use Console.ForegroundColor to set the color;
             // use Console.SetCursorPosition;
             // then write the symbol to the console
+            if (isCollision)
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.SetCursorPosition(x, y);
+                Console.Write("X");
+            }
+            else
+            {
+                Console.ForegroundColor = _color;
+                Console.SetCursorPosition(x - 1, y);
+                Console.Write(_symbols);
+            }
         }
 
         public void MoveLeft()
         {
             //move left
+                x = x - 1;
+        
         }
 
         public void MoveRight()
         {
             //move right
+           
+                x = x + 1;
+          
         }
     
     }
