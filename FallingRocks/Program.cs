@@ -116,6 +116,7 @@ namespace FallingRocks
                     if ((result.Key == ConsoleKey.Enter))
                     {
                         Console.Clear();
+                        gameSpeed = 0d;
                         Main();
                     }
                     else if ((result.Key == ConsoleKey.Escape))
