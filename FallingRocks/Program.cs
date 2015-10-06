@@ -133,7 +133,7 @@ namespace FallingRocks
             Console.BufferWidth = Console.WindowWidth = WindowWidth;
             Console.BufferHeight = Console.WindowHeight = WindowHeight;
             Console.CursorVisible = false;
-            _dwarf = new Dwarf(WindowWidth, WindowHeight, 10);
+            _dwarf = new Dwarf(WindowWidth-GameMenuWidth, WindowHeight, 10);
             GenerateNewRocks();
             while (true)
             {
@@ -238,7 +238,7 @@ namespace FallingRocks
                 _rocks.Clear();
                 Console.Clear();
                 GenerateNewRocks();
-                _dwarf = new Dwarf(WindowWidth, WindowHeight, _dwarf.livesCount);
+                _dwarf = new Dwarf(WindowWidth-GameMenuWidth, WindowHeight, _dwarf.livesCount);
                 _dwarf.isCollision = false;
             }
             //determine collision between the _dwarf and rocks
