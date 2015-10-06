@@ -125,7 +125,7 @@ namespace FallingRocks
                     }
                     else if ((result.Key == ConsoleKey.Escape))
                     {
-                        return;
+                        Environment.Exit(0);
                     }
                 }
             }
