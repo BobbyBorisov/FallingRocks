@@ -18,9 +18,16 @@ namespace FallingRocks
         static ulong gameScore = 0ul;          //Current score.
         private static Dwarf _dwarf;
         private static List<Rock> _rocks = new List<Rock>();
-        private static int MaximumNumberOfRocks = 9;
+        private static int MaximumNumberOfRocks = 15;
         static Random random = new Random();
         private static List<char> _possibleSymbols = new List<char>() { '^','*','%','&','$','#' }; //symbols for the rocks
+        private static List<ConsoleColor> _possibleColors = new List<ConsoleColor>(){
+            ConsoleColor.Red,
+            ConsoleColor.Green,
+            ConsoleColor.Yellow
+        }; // possible colors
+        private static List<ConsoleColor> colors = new List<ConsoleColor>();
+        private static List<char> chars = new List<char>();
 
         private static void GetUserInput()
         {
@@ -162,6 +169,8 @@ namespace FallingRocks
                 {
                     ClearRock(_rocks[p]);
                     _rocks[p] = new Rock(random.Next(0, WindowWidth - GameMenuWidth), 0);
+                    colors[p] = _possibleColors[random.Next(0, _possibleColors.Count)];
+                    chars[p] = _possibleSymbols[random.Next(0, _possibleSymbols.Count)];
                 }
                 else if (check > WindowHeight - 1)
                 {
@@ -172,15 +181,15 @@ namespace FallingRocks
                 {
                     ClearRock(_rocks[p]);
                     _rocks[p] = new Rock(_rocks[p].BoundaryX, _rocks[p].BoundaryY + 4);
-                    GenerateRock(_rocks[p]);
+                    GenerateRock(_rocks[p], chars[p], colors[p]);
                 }
             }
         }
-        private static void GenerateRock(Rock rock, ConsoleColor color = ConsoleColor.Blue)
+        private static void GenerateRock(Rock rock, char symbol, ConsoleColor color)
         {
             Console.SetCursorPosition(rock.BoundaryX, rock.BoundaryY);
             Console.ForegroundColor = color;
-            Console.Write(_possibleSymbols[random.Next(0,_possibleSymbols.Count)]);
+            Console.Write(symbol);
         }
         private static void ClearRock(Rock rock, char ch = ' ', ConsoleColor color = ConsoleColor.Black)
         {
@@ -197,6 +206,8 @@ namespace FallingRocks
             for (int i = 0; i < MaximumNumberOfRocks; i++)
             {
                 _rocks.Add(new Rock(random.Next(0, WindowWidth - GameMenuWidth), 0 - i * 4));
+                colors.Add(_possibleColors[random.Next(0, _possibleColors.Count)]);
+                chars.Add(_possibleSymbols[random.Next(0, _possibleSymbols.Count)]);
             }
         }
 
