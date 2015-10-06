@@ -103,8 +103,11 @@ namespace FallingRocks
                 Console.ForegroundColor = ConsoleColor.Yellow;
                 Console.SetCursorPosition(15, 18);
                 Console.Write("GAME OVER!!!");
+                Console.ForegroundColor = ConsoleColor.White;
+                Console.SetCursorPosition(15, 22);
+                Console.Write("Your score is {0}", gameScore);
                 Console.ForegroundColor = ConsoleColor.Green;
-                Console.SetCursorPosition(8, 22);
+                Console.SetCursorPosition(8, 25);
                 Console.Write("press [ENTER] to play again");
                 Console.ForegroundColor = ConsoleColor.Green;
                 Console.SetCursorPosition(17, 6);
