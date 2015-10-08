@@ -135,6 +135,7 @@ namespace FallingRocks
         {
             Console.BufferWidth = Console.WindowWidth = WindowWidth;
             Console.BufferHeight = Console.WindowHeight = WindowHeight;
+            Console.Title = "Falling Rocks - Team Edmos";
             Console.CursorVisible = false;
             PrintIntro();
             ConsoleKeyInfo pressAnyKey = Console.ReadKey();
