@@ -136,6 +136,28 @@ namespace FallingRocks
             Console.BufferWidth = Console.WindowWidth = WindowWidth;
             Console.BufferHeight = Console.WindowHeight = WindowHeight;
             Console.CursorVisible = false;
+            PrintIntro();
+            ConsoleKeyInfo pressAnyKey = Console.ReadKey();
+            if ((pressAnyKey.Key == ConsoleKey.Enter) || (pressAnyKey.Key != ConsoleKey.Enter))
+            {
+                Console.Clear();
+                _dwarf = new Dwarf(WindowWidth - GameMenuWidth, WindowHeight, 10);
+                GenerateNewRocks();
+                while (true)
+                {
+                    System.Threading.Thread.Sleep(500 - 3 * (int)gameSpeed); //speed
+                    GetUserInput();
+                    MoveRocks();
+                    DetermineCollision();
+                    Repaint();
+                    gameSpeed = Math.Min(gameSpeed + Acceleration, MaximumGameSpeed); //acceleration
+                    //figure out how to exit from the cycle
+                }
+            }
+            /*
+            Console.BufferWidth = Console.WindowWidth = WindowWidth;
+            Console.BufferHeight = Console.WindowHeight = WindowHeight;
+            Console.CursorVisible = false;
             _dwarf = new Dwarf(WindowWidth-GameMenuWidth, WindowHeight, 10);
             GenerateNewRocks();
             while (true)
@@ -148,6 +170,7 @@ namespace FallingRocks
                 gameSpeed = Math.Min(gameSpeed + Acceleration, MaximumGameSpeed); //acceleration
                 //figure out how to exit from the cycle
             }
+            */
         }
 
         private static void MoveRocks()
@@ -247,6 +270,118 @@ namespace FallingRocks
                 _dwarf.isCollision = false;
             }
             //determine collision between the _dwarf and rocks
+        }
+        private static void PrintIntro()
+        {
+            Console.WriteLine();
+            Console.WriteLine();
+            Console.WriteLine();
+            Console.WriteLine();
+            Console.WriteLine();
+            Console.WriteLine();
+
+            //1
+            Console.WriteLine(new String(' ', 0) + new String('*', 6) + new String(' ', 4) //F
+                + new String('*', 3) + new String(' ', 5) //A
+                + new String('*', 3) + new String(' ', 5) //L
+                + new String('*', 3) + new String(' ', 5) //L
+                + new String('*', 3) + new String(' ', 2) //I
+                + new String('*', 3) + new String(' ', 3) + new String('*', 3) + new String(' ', 4) //N
+                + new String('*', 5)); //G
+            //2
+            Console.WriteLine(new String(' ', 0) + new String('*', 3) + new String(' ', 6) //F
+                + new String('*', 5) + new String(' ', 4) //A
+                + new String('*', 3) + new String(' ', 5) //L
+                + new String('*', 3) + new String(' ', 5) //L
+                + new String('*', 3) + new String(' ', 2) //I
+                + new String('*', 4) + new String(' ', 2) + new String('*', 3) + new String(' ', 3) //N
+                + new String('*', 3) + new String(' ', 1) + new String('*', 3)); //G
+            //3
+            Console.WriteLine(new String(' ', 0) + new String('*', 6) + new String(' ', 2) //F
+                + new String('*', 2) + new String(' ', 3) + new String('*', 2) + new String(' ', 3) //A
+                + new String('*', 3) + new String(' ', 5) //L
+                + new String('*', 3) + new String(' ', 5) //L
+                + new String('*', 3) + new String(' ', 2) //I
+                + new String('*', 5) + new String(' ', 1) + new String('*', 3) + new String(' ', 2) //N
+                + new String('*', 3)); //G
+            //4
+            Console.WriteLine(new String(' ', 0) + new String('*', 3) + new String(' ', 4) //F
+                + new String('*', 9) + new String(' ', 2) //A
+                + new String('*', 3) + new String(' ', 5) //L
+                + new String('*', 3) + new String(' ', 5) //L
+                + new String('*', 3) + new String(' ', 2) //I
+                + new String('*', 3) + new String(' ', 1) + new String('*', 5) + new String(' ', 2) //N
+                + new String('*', 3) + new String(' ', 3) + new String('*', 4)); //G
+            //5
+            Console.WriteLine(new String(' ', 0) + new String('*', 3) + new String(' ', 4) //F
+                + new String('*', 3) + new String(' ', 3) + new String('*', 3) + new String(' ', 2) //A
+                + new String('*', 6) + new String(' ', 2) //L
+                + new String('*', 6) + new String(' ', 2) //L
+                + new String('*', 3) + new String(' ', 2) //I
+                + new String('*', 3) + new String(' ', 2) + new String('*', 4) + new String(' ', 3) //N
+                + new String('*', 3) + new String(' ', 2) + new String('*', 3)); //G
+            //6
+            Console.WriteLine(new String(' ', 0) + new String('*', 3) + new String(' ', 4) //F
+                + new String('*', 3) + new String(' ', 3) + new String('*', 3) + new String(' ', 2) //A
+                + new String('*', 6) + new String(' ', 2) //L
+                + new String('*', 6) + new String(' ', 2) //L
+                + new String('*', 3) + new String(' ', 2) //I
+                + new String('*', 3) + new String(' ', 3) + new String('*', 3) + new String(' ', 4) //N
+                + new String('*', 6)); //G
+
+            Console.WriteLine();
+            Console.WriteLine();
+            Console.WriteLine();
+            Console.WriteLine();
+
+            //1
+            Console.WriteLine(new String(' ', 5) + new String('*', 7) + new String(' ', 5) //R
+                + new String('*', 5) + new String(' ', 5) //O
+                + new String('*', 5) + new String(' ', 3) //C
+                + new String('*', 3) + new String(' ', 2) + new String('*', 3) + new String(' ', 3) //K
+                + new String('*', 6)); //S
+            //2
+            Console.WriteLine(new String(' ', 5) + new String('*', 3) + new String(' ', 2) + new String('*', 3) + new String(' ', 3) //R
+                + new String('*', 3) + new String(' ', 1) + new String('*', 3) + new String(' ', 3) //O
+                + new String('*', 3) + new String(' ', 1) + new String('*', 3) + new String(' ', 2)//C
+                + new String('*', 3) + new String(' ', 1) + new String('*', 3) + new String(' ', 3) //K
+                + new String('*', 3) + new String(' ', 2) + new String('*', 3)); //S
+            //3
+            Console.WriteLine(new String(' ', 5) + new String('*', 3) + new String(' ', 2) + new String('*', 3) + new String(' ', 2) //R
+                + new String('*', 3) + new String(' ', 3) + new String('*', 3) + new String(' ', 2) //O
+                + new String('*', 3) + new String(' ', 6) //C
+                + new String('*', 6) + new String(' ', 4) //K
+                + new String('*', 4)); //S
+            //4
+            Console.WriteLine(new String(' ', 5) + new String('*', 6) + new String(' ', 4) //R
+                + new String('*', 3) + new String(' ', 3) + new String('*', 3) + new String(' ', 2) //O
+                + new String('*', 3) + new String(' ', 6) //C
+                + new String('*', 6) + new String(' ', 8) //K
+                + new String('*', 4)); //S
+            //5
+            Console.WriteLine(new String(' ', 5) + new String('*', 3) + new String(' ', 1) + new String('*', 3) + new String(' ', 4) //R
+                + new String('*', 3) + new String(' ', 1) + new String('*', 3) + new String(' ', 3) //O
+                + new String('*', 3) + new String(' ', 1) + new String('*', 3) + new String(' ', 2) //C
+                + new String('*', 3) + new String(' ', 1) + new String('*', 3) + new String(' ', 3) //K
+                + new String('*', 3) + new String(' ', 2) + new String('*', 3)); //S
+            //6
+            Console.WriteLine(new String(' ', 5) + new String('*', 3) + new String(' ', 2) + new String('*', 3) + new String(' ', 4) //R
+                + new String('*', 5) + new String(' ', 5) //O
+                + new String('*', 5) + new String(' ', 3) //C
+                + new String('*', 3) + new String(' ', 2) + new String('*', 3) + new String(' ', 3) //K
+                + new String('*', 6)); //S
+
+            Console.WriteLine();
+            Console.WriteLine();
+            Console.WriteLine();
+            Console.WriteLine();
+            Console.WriteLine(new String(' ', 20) + "by EDMOS TEAM");
+
+            Console.WriteLine();
+            Console.WriteLine();
+            Console.WriteLine();
+            Console.WriteLine();
+            Console.WriteLine(new String(' ', 15) + "PRESS ANY KEY TO PLAY!!!");
         }
     }
 }
