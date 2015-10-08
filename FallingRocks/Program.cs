@@ -241,6 +241,8 @@ namespace FallingRocks
                 _rocks.Clear();
                 Console.Clear();
                 GenerateNewRocks();
+                _dwarf.Draw();
+                System.Threading.Thread.Sleep(1000);
                 _dwarf = new Dwarf(WindowWidth-GameMenuWidth, WindowHeight, _dwarf.livesCount);
                 _dwarf.isCollision = false;
             }
