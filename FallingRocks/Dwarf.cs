@@ -23,11 +23,6 @@ namespace FallingRocks
 
         public override void Draw()
         {
-            //if we have collided draw some symbol at the middle of our dwarf
-            //otherwise set cursor at position x-1,y because the dwarf is 3 symbols {0} and the x position is the middle one
-            // use Console.ForegroundColor to set the color;
-            // use Console.SetCursorPosition;
-            // then write the symbol to the console
             if (isCollision)
             {
                 Console.ForegroundColor = ConsoleColor.Red;
@@ -44,17 +39,12 @@ namespace FallingRocks
 
         public void MoveLeft()
         {
-            //move left
-                x = x - 1;
-        
+            x = x - 1;
         }
 
         public void MoveRight()
         {
-            //move right
-           
-                x = x + 1;
-          
+                x = x + 1;         
         }
     
     }

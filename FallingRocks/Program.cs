@@ -71,16 +71,8 @@ namespace FallingRocks
             {
                 Console.SetCursorPosition(0, WindowHeight - 1);
                 Console.Write(new string(' ',WindowWidth - GameMenuWidth));
-                //Console.Clear();
                 DrawGameMenu();
                 _dwarf.Draw();
-
-                //foreach (var rock in _rocks)
-                //{
-                //    rock.Draw();
-                //}
-
-                //Thread.Sleep(100);
             }
             else
             {
@@ -142,50 +134,22 @@ namespace FallingRocks
             if ((pressAnyKey.Key == ConsoleKey.Enter) || (pressAnyKey.Key != ConsoleKey.Enter))
             {
                 Console.Clear();
-                _dwarf = new Dwarf(WindowWidth - GameMenuWidth, WindowHeight, 10);
+                _dwarf = new Dwarf(WindowWidth - GameMenuWidth, WindowHeight, 5);
                 GenerateNewRocks();
                 while (true)
                 {
-                    System.Threading.Thread.Sleep(500 - 3 * (int)gameSpeed); //speed
+                    System.Threading.Thread.Sleep(500 - 3 * (int)gameSpeed);
                     GetUserInput();
                     MoveRocks();
                     DetermineCollision();
                     Repaint();
-                    gameSpeed = Math.Min(gameSpeed + Acceleration, MaximumGameSpeed); //acceleration
-                    //figure out how to exit from the cycle
+                    gameSpeed = Math.Min(gameSpeed + Acceleration, MaximumGameSpeed);
                 }
             }
-            /*
-            Console.BufferWidth = Console.WindowWidth = WindowWidth;
-            Console.BufferHeight = Console.WindowHeight = WindowHeight;
-            Console.CursorVisible = false;
-            _dwarf = new Dwarf(WindowWidth-GameMenuWidth, WindowHeight, 10);
-            GenerateNewRocks();
-            while (true)
-            {
-                System.Threading.Thread.Sleep(500 - 3 * (int)gameSpeed); //speed
-                GetUserInput();
-                MoveRocks();
-                DetermineCollision();
-                Repaint();
-                gameSpeed = Math.Min(gameSpeed + Acceleration, MaximumGameSpeed); //acceleration
-                //figure out how to exit from the cycle
-            }
-            */
         }
 
         private static void MoveRocks()
         {
-            //var rocksIndexesToBeRemoved = new List<int>();
-
-            //iterate over the rocks and move them down(Rock object has a method MoveDown()
-            //check if rock is visible and add it for deletion
-
-            //increase gameScore
-            //increase gameSpeed by some acceleration and then use it to decrease Thread.Sleep argument in Repaint() method
-
-            //remove rocks from the current array for deletion by indexes
-
             for (int p = 0; p < _rocks.Count; p++)
             {
                 int check1 = _rocks[p].BoundaryY;
@@ -231,8 +195,6 @@ namespace FallingRocks
         
         private static void GenerateNewRocks()
         {
-            //check whether we have the max number of rocks .. otherwise generate a new one and pass WindowsWidth and WIndowsHeight to
-            //the constructor
             for (int i = 0; i < MaximumNumberOfRocks; i++)
             {
                 _rocks.Add(new Rock(random.Next(0, WindowWidth - GameMenuWidth), 0 - i * 4));
@@ -243,12 +205,6 @@ namespace FallingRocks
 
         private static void DetermineCollision()
         {
-            //Object coordinateX = new object();
-            //Object coordinateY = new object();
-            //coordinateX = GameObject.x;
-            //coordinateY = GameObject.y;
-
-            
             for (int i = 0; i < _rocks.Count; i++)
             {
                 if ((_dwarf.x == _rocks[i].BoundaryX && _dwarf.y == _rocks[i].BoundaryY + 1)
@@ -270,7 +226,6 @@ namespace FallingRocks
                 _dwarf = new Dwarf(WindowWidth-GameMenuWidth, WindowHeight, _dwarf.livesCount);
                 _dwarf.isCollision = false;
             }
-            //determine collision between the _dwarf and rocks
         }
         private static void PrintIntro()
         {
