@@ -277,9 +277,13 @@ namespace FallingRocks
             Console.WriteLine();
             Console.WriteLine();
             Console.WriteLine();
+            Console.WriteLine();
+            Console.WriteLine();
+            Console.WriteLine();
+            Console.WriteLine();
 
             //1
-            Console.WriteLine(new String(' ', 0) + new String('*', 6) + new String(' ', 4) //F
+            Console.WriteLine(new String(' ', 20) + new String('*', 6) + new String(' ', 4) //F
                 + new String('*', 3) + new String(' ', 5) //A
                 + new String('*', 3) + new String(' ', 5) //L
                 + new String('*', 3) + new String(' ', 5) //L
@@ -287,7 +291,7 @@ namespace FallingRocks
                 + new String('*', 3) + new String(' ', 3) + new String('*', 3) + new String(' ', 4) //N
                 + new String('*', 5)); //G
             //2
-            Console.WriteLine(new String(' ', 0) + new String('*', 3) + new String(' ', 6) //F
+            Console.WriteLine(new String(' ', 20) + new String('*', 3) + new String(' ', 6) //F
                 + new String('*', 5) + new String(' ', 4) //A
                 + new String('*', 3) + new String(' ', 5) //L
                 + new String('*', 3) + new String(' ', 5) //L
@@ -295,7 +299,7 @@ namespace FallingRocks
                 + new String('*', 4) + new String(' ', 2) + new String('*', 3) + new String(' ', 3) //N
                 + new String('*', 3) + new String(' ', 1) + new String('*', 3)); //G
             //3
-            Console.WriteLine(new String(' ', 0) + new String('*', 6) + new String(' ', 2) //F
+            Console.WriteLine(new String(' ', 20) + new String('*', 6) + new String(' ', 2) //F
                 + new String('*', 2) + new String(' ', 3) + new String('*', 2) + new String(' ', 3) //A
                 + new String('*', 3) + new String(' ', 5) //L
                 + new String('*', 3) + new String(' ', 5) //L
@@ -303,7 +307,7 @@ namespace FallingRocks
                 + new String('*', 5) + new String(' ', 1) + new String('*', 3) + new String(' ', 2) //N
                 + new String('*', 3)); //G
             //4
-            Console.WriteLine(new String(' ', 0) + new String('*', 3) + new String(' ', 4) //F
+            Console.WriteLine(new String(' ', 20) + new String('*', 3) + new String(' ', 4) //F
                 + new String('*', 9) + new String(' ', 2) //A
                 + new String('*', 3) + new String(' ', 5) //L
                 + new String('*', 3) + new String(' ', 5) //L
@@ -311,7 +315,7 @@ namespace FallingRocks
                 + new String('*', 3) + new String(' ', 1) + new String('*', 5) + new String(' ', 2) //N
                 + new String('*', 3) + new String(' ', 3) + new String('*', 4)); //G
             //5
-            Console.WriteLine(new String(' ', 0) + new String('*', 3) + new String(' ', 4) //F
+            Console.WriteLine(new String(' ', 20) + new String('*', 3) + new String(' ', 4) //F
                 + new String('*', 3) + new String(' ', 3) + new String('*', 3) + new String(' ', 2) //A
                 + new String('*', 6) + new String(' ', 2) //L
                 + new String('*', 6) + new String(' ', 2) //L
@@ -319,7 +323,7 @@ namespace FallingRocks
                 + new String('*', 3) + new String(' ', 2) + new String('*', 4) + new String(' ', 3) //N
                 + new String('*', 3) + new String(' ', 2) + new String('*', 3)); //G
             //6
-            Console.WriteLine(new String(' ', 0) + new String('*', 3) + new String(' ', 4) //F
+            Console.WriteLine(new String(' ', 20) + new String('*', 3) + new String(' ', 4) //F
                 + new String('*', 3) + new String(' ', 3) + new String('*', 3) + new String(' ', 2) //A
                 + new String('*', 6) + new String(' ', 2) //L
                 + new String('*', 6) + new String(' ', 2) //L
@@ -333,37 +337,37 @@ namespace FallingRocks
             Console.WriteLine();
 
             //1
-            Console.WriteLine(new String(' ', 5) + new String('*', 7) + new String(' ', 5) //R
+            Console.WriteLine(new String(' ', 25) + new String('*', 7) + new String(' ', 5) //R
                 + new String('*', 5) + new String(' ', 5) //O
                 + new String('*', 5) + new String(' ', 3) //C
                 + new String('*', 3) + new String(' ', 2) + new String('*', 3) + new String(' ', 3) //K
                 + new String('*', 6)); //S
             //2
-            Console.WriteLine(new String(' ', 5) + new String('*', 3) + new String(' ', 2) + new String('*', 3) + new String(' ', 3) //R
+            Console.WriteLine(new String(' ', 25) + new String('*', 3) + new String(' ', 2) + new String('*', 3) + new String(' ', 3) //R
                 + new String('*', 3) + new String(' ', 1) + new String('*', 3) + new String(' ', 3) //O
                 + new String('*', 3) + new String(' ', 1) + new String('*', 3) + new String(' ', 2)//C
                 + new String('*', 3) + new String(' ', 1) + new String('*', 3) + new String(' ', 3) //K
                 + new String('*', 3) + new String(' ', 2) + new String('*', 3)); //S
             //3
-            Console.WriteLine(new String(' ', 5) + new String('*', 3) + new String(' ', 2) + new String('*', 3) + new String(' ', 2) //R
+            Console.WriteLine(new String(' ', 25) + new String('*', 3) + new String(' ', 2) + new String('*', 3) + new String(' ', 2) //R
                 + new String('*', 3) + new String(' ', 3) + new String('*', 3) + new String(' ', 2) //O
                 + new String('*', 3) + new String(' ', 6) //C
                 + new String('*', 6) + new String(' ', 4) //K
                 + new String('*', 4)); //S
             //4
-            Console.WriteLine(new String(' ', 5) + new String('*', 6) + new String(' ', 4) //R
+            Console.WriteLine(new String(' ', 25) + new String('*', 6) + new String(' ', 4) //R
                 + new String('*', 3) + new String(' ', 3) + new String('*', 3) + new String(' ', 2) //O
                 + new String('*', 3) + new String(' ', 6) //C
                 + new String('*', 6) + new String(' ', 8) //K
                 + new String('*', 4)); //S
             //5
-            Console.WriteLine(new String(' ', 5) + new String('*', 3) + new String(' ', 1) + new String('*', 3) + new String(' ', 4) //R
+            Console.WriteLine(new String(' ', 25) + new String('*', 3) + new String(' ', 1) + new String('*', 3) + new String(' ', 4) //R
                 + new String('*', 3) + new String(' ', 1) + new String('*', 3) + new String(' ', 3) //O
                 + new String('*', 3) + new String(' ', 1) + new String('*', 3) + new String(' ', 2) //C
                 + new String('*', 3) + new String(' ', 1) + new String('*', 3) + new String(' ', 3) //K
                 + new String('*', 3) + new String(' ', 2) + new String('*', 3)); //S
             //6
-            Console.WriteLine(new String(' ', 5) + new String('*', 3) + new String(' ', 2) + new String('*', 3) + new String(' ', 4) //R
+            Console.WriteLine(new String(' ', 25) + new String('*', 3) + new String(' ', 2) + new String('*', 3) + new String(' ', 4) //R
                 + new String('*', 5) + new String(' ', 5) //O
                 + new String('*', 5) + new String(' ', 3) //C
                 + new String('*', 3) + new String(' ', 2) + new String('*', 3) + new String(' ', 3) //K
@@ -373,13 +377,17 @@ namespace FallingRocks
             Console.WriteLine();
             Console.WriteLine();
             Console.WriteLine();
-            Console.WriteLine(new String(' ', 20) + "by EDMOS TEAM");
+            Console.WriteLine();
+            Console.WriteLine();
+            Console.WriteLine();
+            Console.WriteLine();
+            Console.WriteLine(new String(' ', 42) + "by EDMOS TEAM");
 
             Console.WriteLine();
             Console.WriteLine();
             Console.WriteLine();
             Console.WriteLine();
-            Console.WriteLine(new String(' ', 15) + "PRESS ANY KEY TO PLAY!!!");
+            Console.WriteLine(new String(' ', 37) + "PRESS ANY KEY TO PLAY!!!");
         }
     }
 }
