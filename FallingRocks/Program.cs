@@ -229,6 +229,22 @@ namespace FallingRocks
         }
         private static void PrintIntro()
         {
+            List<int>[] falling = new List<int>[] {
+                new List<int> {20, 6, 4, 3, 5, 3, 5, 3, 5, 3, 2, 3, 3, 3, 4, 5},
+                new List<int> {20, 3, 6, 5, 4, 3, 5, 3, 5, 3, 2, 4, 2, 3, 3, 3, 1, 3},
+                new List<int> {20, 6, 2, 2, 3, 2, 3, 3, 5, 3, 5, 3, 2, 5, 1, 3, 2, 3},
+                new List<int> {20, 3, 4, 9, 2, 3, 5, 3, 5, 3, 2, 3, 1, 5, 2, 3, 3, 4},
+                new List<int> {20, 3, 4, 3, 3, 3, 2, 6, 2, 6, 2, 3, 2, 3, 2, 4, 3, 3, 2, 3},
+                new List<int> {20, 3, 4, 3, 3, 3, 2, 6, 2, 6, 2, 3, 2, 3, 3, 3, 4, 6}};
+
+            List<int>[] rocks = new List<int>[] {
+                new List<int> {25, 7, 5, 5, 5, 5, 3, 3, 2, 3, 3, 6},
+                new List<int> {25, 3, 2, 3, 3, 3, 1, 3, 3, 3, 1, 3, 2, 3, 1, 3, 3, 3, 2, 3},
+                new List<int> {25, 3, 2, 3, 2, 3, 3, 3, 2, 3, 6, 6, 4, 4},
+                new List<int> {25, 6, 4, 3, 3, 3, 2, 3, 6, 6, 8, 4},
+                new List<int> {25, 3, 1, 3, 4, 3, 1, 3, 3, 3, 1, 3, 2, 3, 1, 3, 3, 3, 2, 3},
+                new List<int> {25, 3, 2, 3, 4, 5, 5, 5, 3, 3, 2, 3, 3, 6}};
+
             Console.WriteLine();
             Console.WriteLine();
             Console.WriteLine();
@@ -240,97 +256,45 @@ namespace FallingRocks
             Console.WriteLine();
             Console.WriteLine();
 
-            //1
-            Console.WriteLine(new String(' ', 20) + new String('*', 6) + new String(' ', 4) //F
-                + new String('*', 3) + new String(' ', 5) //A
-                + new String('*', 3) + new String(' ', 5) //L
-                + new String('*', 3) + new String(' ', 5) //L
-                + new String('*', 3) + new String(' ', 2) //I
-                + new String('*', 3) + new String(' ', 3) + new String('*', 3) + new String(' ', 4) //N
-                + new String('*', 5)); //G
-            //2
-            Console.WriteLine(new String(' ', 20) + new String('*', 3) + new String(' ', 6) //F
-                + new String('*', 5) + new String(' ', 4) //A
-                + new String('*', 3) + new String(' ', 5) //L
-                + new String('*', 3) + new String(' ', 5) //L
-                + new String('*', 3) + new String(' ', 2) //I
-                + new String('*', 4) + new String(' ', 2) + new String('*', 3) + new String(' ', 3) //N
-                + new String('*', 3) + new String(' ', 1) + new String('*', 3)); //G
-            //3
-            Console.WriteLine(new String(' ', 20) + new String('*', 6) + new String(' ', 2) //F
-                + new String('*', 2) + new String(' ', 3) + new String('*', 2) + new String(' ', 3) //A
-                + new String('*', 3) + new String(' ', 5) //L
-                + new String('*', 3) + new String(' ', 5) //L
-                + new String('*', 3) + new String(' ', 2) //I
-                + new String('*', 5) + new String(' ', 1) + new String('*', 3) + new String(' ', 2) //N
-                + new String('*', 3)); //G
-            //4
-            Console.WriteLine(new String(' ', 20) + new String('*', 3) + new String(' ', 4) //F
-                + new String('*', 9) + new String(' ', 2) //A
-                + new String('*', 3) + new String(' ', 5) //L
-                + new String('*', 3) + new String(' ', 5) //L
-                + new String('*', 3) + new String(' ', 2) //I
-                + new String('*', 3) + new String(' ', 1) + new String('*', 5) + new String(' ', 2) //N
-                + new String('*', 3) + new String(' ', 3) + new String('*', 4)); //G
-            //5
-            Console.WriteLine(new String(' ', 20) + new String('*', 3) + new String(' ', 4) //F
-                + new String('*', 3) + new String(' ', 3) + new String('*', 3) + new String(' ', 2) //A
-                + new String('*', 6) + new String(' ', 2) //L
-                + new String('*', 6) + new String(' ', 2) //L
-                + new String('*', 3) + new String(' ', 2) //I
-                + new String('*', 3) + new String(' ', 2) + new String('*', 4) + new String(' ', 3) //N
-                + new String('*', 3) + new String(' ', 2) + new String('*', 3)); //G
-            //6
-            Console.WriteLine(new String(' ', 20) + new String('*', 3) + new String(' ', 4) //F
-                + new String('*', 3) + new String(' ', 3) + new String('*', 3) + new String(' ', 2) //A
-                + new String('*', 6) + new String(' ', 2) //L
-                + new String('*', 6) + new String(' ', 2) //L
-                + new String('*', 3) + new String(' ', 2) //I
-                + new String('*', 3) + new String(' ', 3) + new String('*', 3) + new String(' ', 4) //N
-                + new String('*', 6)); //G
-
+            Console.ForegroundColor = ConsoleColor.Cyan;
+            for (int i = 0; i < 6; i++)
+            {
+                for (int j = 0; j < falling[i].Count; j++)
+                {
+                    if (j % 2 == 0)
+                    {
+                        Console.Write(new String(' ', falling[i][j]));
+                    }
+                    else
+                    {
+                        Console.Write(new String('*', falling[i][j]));
+                    }
+                }
+                Console.WriteLine();
+            }
+            
             Console.WriteLine();
             Console.WriteLine();
             Console.WriteLine();
             Console.WriteLine();
 
-            //1
-            Console.WriteLine(new String(' ', 25) + new String('*', 7) + new String(' ', 5) //R
-                + new String('*', 5) + new String(' ', 5) //O
-                + new String('*', 5) + new String(' ', 3) //C
-                + new String('*', 3) + new String(' ', 2) + new String('*', 3) + new String(' ', 3) //K
-                + new String('*', 6)); //S
-            //2
-            Console.WriteLine(new String(' ', 25) + new String('*', 3) + new String(' ', 2) + new String('*', 3) + new String(' ', 3) //R
-                + new String('*', 3) + new String(' ', 1) + new String('*', 3) + new String(' ', 3) //O
-                + new String('*', 3) + new String(' ', 1) + new String('*', 3) + new String(' ', 2)//C
-                + new String('*', 3) + new String(' ', 1) + new String('*', 3) + new String(' ', 3) //K
-                + new String('*', 3) + new String(' ', 2) + new String('*', 3)); //S
-            //3
-            Console.WriteLine(new String(' ', 25) + new String('*', 3) + new String(' ', 2) + new String('*', 3) + new String(' ', 2) //R
-                + new String('*', 3) + new String(' ', 3) + new String('*', 3) + new String(' ', 2) //O
-                + new String('*', 3) + new String(' ', 6) //C
-                + new String('*', 6) + new String(' ', 4) //K
-                + new String('*', 4)); //S
-            //4
-            Console.WriteLine(new String(' ', 25) + new String('*', 6) + new String(' ', 4) //R
-                + new String('*', 3) + new String(' ', 3) + new String('*', 3) + new String(' ', 2) //O
-                + new String('*', 3) + new String(' ', 6) //C
-                + new String('*', 6) + new String(' ', 8) //K
-                + new String('*', 4)); //S
-            //5
-            Console.WriteLine(new String(' ', 25) + new String('*', 3) + new String(' ', 1) + new String('*', 3) + new String(' ', 4) //R
-                + new String('*', 3) + new String(' ', 1) + new String('*', 3) + new String(' ', 3) //O
-                + new String('*', 3) + new String(' ', 1) + new String('*', 3) + new String(' ', 2) //C
-                + new String('*', 3) + new String(' ', 1) + new String('*', 3) + new String(' ', 3) //K
-                + new String('*', 3) + new String(' ', 2) + new String('*', 3)); //S
-            //6
-            Console.WriteLine(new String(' ', 25) + new String('*', 3) + new String(' ', 2) + new String('*', 3) + new String(' ', 4) //R
-                + new String('*', 5) + new String(' ', 5) //O
-                + new String('*', 5) + new String(' ', 3) //C
-                + new String('*', 3) + new String(' ', 2) + new String('*', 3) + new String(' ', 3) //K
-                + new String('*', 6)); //S
+            for (int i = 0; i < 6; i++)
+            {
+                for (int j = 0; j < rocks[i].Count; j++)
+                {
+                    if (j % 2 == 0)
+                    {
+                        Console.Write(new String(' ', rocks[i][j]));
+                    }
+                    else
+                    {
+                        Console.Write(new String('*', rocks[i][j]));
+                    }
+                }
+                Console.WriteLine();
+            }
 
+            Console.ForegroundColor = ConsoleColor.DarkCyan;
             Console.WriteLine();
             Console.WriteLine();
             Console.WriteLine();
