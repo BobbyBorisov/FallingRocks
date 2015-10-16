@@ -245,40 +245,10 @@ namespace FallingRocks
                 new List<int> {25, 3, 1, 3, 4, 3, 1, 3, 3, 3, 1, 3, 2, 3, 1, 3, 3, 3, 2, 3},
                 new List<int> {25, 3, 2, 3, 4, 5, 5, 5, 3, 3, 2, 3, 3, 6}};
 
-            Console.WriteLine();
-            Console.WriteLine();
-            Console.WriteLine();
-            Console.WriteLine();
-            Console.WriteLine();
-            Console.WriteLine();
-            Console.WriteLine();
-            Console.WriteLine();
-            Console.WriteLine();
-            Console.WriteLine();
-
             Console.ForegroundColor = ConsoleColor.Cyan;
-            for (int i = 0; i < 6; i++)
-            {
-                for (int j = 0; j < falling[i].Count; j++)
-                {
-                    if (j % 2 == 0)
-                    {
-                        Console.Write(new String(' ', falling[i][j]));
-                    }
-                    else
-                    {
-                        Console.Write(new String('*', falling[i][j]));
-                    }
-                }
-                Console.WriteLine();
-            }
-            
-            Console.WriteLine();
-            Console.WriteLine();
-            Console.WriteLine();
-            Console.WriteLine();
 
-            for (int i = 0; i < 6; i++)
+            int countR = 26;
+            for (int i = 5; i >= 0; i--)
             {
                 for (int j = 0; j < rocks[i].Count; j++)
                 {
@@ -292,24 +262,48 @@ namespace FallingRocks
                     }
                 }
                 Console.WriteLine();
+                for (int c = 0; c < countR; c++)
+                {
+                    Console.MoveBufferArea(0, c, 80, 1, 0, c + 1);
+                    Thread.Sleep(25);
+                }
+                Console.SetCursorPosition(0, 0);
+                countR--;
             }
 
-            Console.ForegroundColor = ConsoleColor.DarkCyan;
-            Console.WriteLine();
-            Console.WriteLine();
-            Console.WriteLine();
-            Console.WriteLine();
-            Console.WriteLine();
-            Console.WriteLine();
-            Console.WriteLine();
-            Console.WriteLine();
-            Console.WriteLine(new String(' ', 42) + "by EDMOS TEAM");
+            int countF = 16;
+            for (int i = 5; i >= 0; i--)
+            {
+                for (int j = 0; j < falling[i].Count; j++)
+                {
+                    if (j % 2 == 0)
+                    {
+                        Console.Write(new String(' ', falling[i][j]));
+                    }
+                    else
+                    {
+                        Console.Write(new String('*', falling[i][j]));
+                    }
+                }
+                Console.WriteLine();
+                for (int c = 0; c < countF; c++)
+                {
+                    Console.MoveBufferArea(0, c, 80, 1, 0, c + 1);
+                    Thread.Sleep(25);
+                }
+                Console.SetCursorPosition(0, 0);
+                countF--;
+            }
 
-            Console.WriteLine();
-            Console.WriteLine();
-            Console.WriteLine();
-            Console.WriteLine();
-            Console.WriteLine(new String(' ', 37) + "PRESS ANY KEY TO PLAY!!!");
+            Console.ForegroundColor = ConsoleColor.Gray;
+            Thread.Sleep(800);
+            Console.SetCursorPosition(43, 35);
+            Console.WriteLine("by EDMOS TEAM");
+
+            Console.ForegroundColor = ConsoleColor.DarkCyan;
+            Thread.Sleep(800);
+            Console.SetCursorPosition(38, 40);
+            Console.WriteLine("PRESS ANY KEY TO PLAY!!!");
         }
     }
 }
